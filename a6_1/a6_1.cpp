@@ -40,23 +40,21 @@ int main(int argc, const char * argv[]) {
     char *inString;                         // To point to a character array
     
     // Asks if user wants to provide customized string
-//    do {
-//        cout << "Do you want to enter your own string?: (0 = No; 1 = Yes) ";
-//        cin >> userOpt1;
-//        cin.ignore();
-//
-//        if (!(userOpt1 == 0 || userOpt1 == 1)) {
-//            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
-//        }
-//    } while (!(userOpt1 == 0 || userOpt1 == 1));
+    do {
+        cout << "Do you want to enter your own string?: (0 = No; 1 = Yes) ";
+        cin >> userOpt1;
+        cin.ignore();
+
+        if (!(userOpt1 == 0 || userOpt1 == 1)) {
+            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
+        }
+    } while (!(userOpt1 == 0 || userOpt1 == 1));
     
     // If yes, gets user's input limited to 99 characters
     if (userOpt1 == 1) {
         cout << "Enter your test string (limited to less than 100 characters): ";
         cin.get(userStr, 100, '\n');
         cin.ignore();
-//        cout << userStr << endl;
-//        cout << strlen(userStr) << endl;
         inString = userStr;
     } else {
 //        inString = str1;                    // Modify array from options above to test
@@ -66,19 +64,18 @@ int main(int argc, const char * argv[]) {
         inString = str5;
     }
     
-//    cout << "Test string: " << inString << endl;
     // Asks if user wants to modify target and replacement characters from default
-//    do {
-//        cout << "Do you want to enter your own target and replacement characters?:";
-//        cout << "(0 = No; 1 = Yes) ";
-//        cin >> userOpt2;
-//        cin.ignore();
-//
-//        if (!(userOpt2 == 0 || userOpt2 == 1)) {
-//            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
-//        }
-//    } while (!(userOpt2 == 0 || userOpt2 == 1));
-//
+    do {
+        cout << "Do you want to enter your own target and replacement characters?:";
+        cout << "(0 = No; 1 = Yes) ";
+        cin >> userOpt2;
+        cin.ignore();
+
+        if (!(userOpt2 == 0 || userOpt2 == 1)) {
+            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
+        }
+    } while (!(userOpt2 == 0 || userOpt2 == 1));
+
     // If yes, gets user's inputs for both
     if (userOpt2 == 1) {
         cout << "Enter your target character: ";
@@ -89,12 +86,7 @@ int main(int argc, const char * argv[]) {
         cin.ignore();
     }
     
-//    cout << "Target - Replacement: " << target << " - " << replacement << endl;
-    
-//    for (int x = 0; x < strlen(inString); x++) {
-//        cout << x << ": " << inString[x] << endl;
-//    }
-    
+    // Displays original string to test
     cout << "The original string: " << inString << endl;
     
     // Tests function lastIndexOf
@@ -144,33 +136,16 @@ int main(int argc, const char * argv[]) {
 */
 
 int lastIndexOf(const char* inString, char target) {
-    int index = -1;
-    int x = 0;
-//    int length = int(strlen(inString));
+    int lastIndex = -1;
+    int index = 0;
     
-//    cout << strlen(inString) << endl;
-//    for (int x = 0; x < length; x++) {
-//        if (*(inString + x) == target) {
-//            index = x;
-//        }
-//    }
-    
-    // using while loop
-    while (*inString != '\0') {
-        if (*inString == target) {
-            index = x;
+    while (inString[index] != '\0') {
+        if (inString[index] == target) {
+            lastIndex = index;
         }
-        x++;
-        inString++;
+        index++;
     }
-    
-//    while (inString[x] != '\0') {
-//        if (inString[x] == target) {
-//            index = x;
-//        }
-//        x++;
-//    }
-    return index;
+    return lastIndex;
 }
 
 
@@ -205,32 +180,15 @@ void reverse(char* inString) {
 
 int replace(char* inString, char target, char replacementChar) {
     int count = 0;
-//    int x = 0;
-//    int length = (int)(strlen(inString));
+    int index = 0;
     
-//    for (int x = 0; x < length; x++) {
-//        if (*(inString + x) == target) {
-//            *(inString + x) = replacementChar;
-//            count++;
-//        }
-//    }
-    
-    // using while loop
-    while (*inString != '\0') {
-        if (*inString == target) {
-            *inString = replacementChar;
+    while (inString[index] != '\0') {
+        if (inString[index] == target) {
+            inString[index] = replacementChar;
             count++;
         }
-        inString++;
+        index++;
     }
-    
-//    while (inString[x] != '\0') {
-//        if (inString[x] == target) {
-//            inString[x] = replacementChar;
-//            count++;
-//        }
-//        x++;
-//    }
     return count;
 }
 
@@ -247,10 +205,6 @@ int replace(char* inString, char target, char replacementChar) {
 
 bool isPalindrome(const char* inString) {
     int backwards = (int)strlen(inString);
-    
-//    if (backwards == 1) {
-//        return true;
-//    }
     
     for (int x = 0; x < (backwards / 2); x++) {
         if (toupper(*(inString + x)) != toupper(*(inString + backwards - x - 1))) {
@@ -271,23 +225,12 @@ bool isPalindrome(const char* inString) {
  */
 
 void toupper(char* inString) {
-//    int x = 0;
-//    int length = (int)(strlen(inString));
-    
-//    for (int x = 0; x < length; x++) {
-//        *(inString + x) = toupper(*(inString + x));
-//    }
-    
-    //using while loop
-    while (*inString != '\0') {
-        *inString = toupper(*inString);
-        inString++;
+    int index = 0;
+
+    while (inString[index] != '\0') {
+        inString[index] = toupper(inString[index]);
+        index++;
     }
-    
-//    while (inString[x] != '\0') {
-//        *(inString + x) = toupper(*(inString + x));
-//        x++;
-//    }
 }
 
 
@@ -302,29 +245,14 @@ void toupper(char* inString) {
 
 int numLetters(const char* inString) {
     int count = 0;
-//    int x = 0;
-//    int length = (int)strlen(inString);
+    int index = 0;
     
-//    for (int x = 0; x < length; x++) {
-//        if (isalpha(*(inString + x))) {
-//            count++;
-//        }
-//    }
-    
-    // using while loop
-    while (*inString != '\0') {
-        if (isalpha(*inString)) {
+    while (inString[index] != '\0') {
+        if (isalpha(inString[index])) {
             count++;
         }
-        inString++;
+        index++;
     }
-    
-//    while (inString[x] != '\0') {
-//        if (isalpha(inString[x])) {
-//            count++;
-//        }
-//        x++;
-//    }
     return count;
 }
 
