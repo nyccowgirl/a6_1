@@ -41,15 +41,15 @@ int main(int argc, const char * argv[]) {
 //    cout << strlen(str1) << endl;
 //    cout << sizeof(str1) << endl;
     // Asks if user wants to provide customized string
-    do {
-        cout << "Do you want to enter your own string?: (0 = No; 1 = Yes) ";
-        cin >> userOpt1;
-        cin.ignore();
-        
-        if (!(userOpt1 == 0 || userOpt1 == 1)) {
-            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
-        }
-    } while (!(userOpt1 == 0 || userOpt1 == 1));
+//    do {
+//        cout << "Do you want to enter your own string?: (0 = No; 1 = Yes) ";
+//        cin >> userOpt1;
+//        cin.ignore();
+//
+//        if (!(userOpt1 == 0 || userOpt1 == 1)) {
+//            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
+//        }
+//    } while (!(userOpt1 == 0 || userOpt1 == 1));
     
     // If yes, gets user's input limited to 99 characters
     if (userOpt1 == 1) {
@@ -68,28 +68,32 @@ int main(int argc, const char * argv[]) {
     
 //    cout << "Test string: " << inString << endl;
     // Asks if user wants to modify target and replacement characters from default
-    do {
-        cout << "Do you want to enter your own target and replacement characters?:";
-        cout << "(0 = No; 1 = Yes) ";
-        cin >> userOpt2;
-        cin.ignore();
-        
-        if (!(userOpt2 == 0 || userOpt2 == 1)) {
-            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
-        }
-    } while (!(userOpt2 == 0 || userOpt2 == 1));
-    
-    // If yes, gets user's inputs for both
-    if (userOpt2 == 1) {
-        cout << "Enter your target character: ";
-        cin >> target;
-        cin.ignore();
-        cout << "Enter your replacement character: ";
-        cin >> replacement;
-        cin.ignore();
-    }
+//    do {
+//        cout << "Do you want to enter your own target and replacement characters?:";
+//        cout << "(0 = No; 1 = Yes) ";
+//        cin >> userOpt2;
+//        cin.ignore();
+//
+//        if (!(userOpt2 == 0 || userOpt2 == 1)) {
+//            cout << "Invalid input: Please enter 0 for No and 1 for Yes." << endl;
+//        }
+//    } while (!(userOpt2 == 0 || userOpt2 == 1));
+//
+//    // If yes, gets user's inputs for both
+//    if (userOpt2 == 1) {
+//        cout << "Enter your target character: ";
+//        cin >> target;
+//        cin.ignore();
+//        cout << "Enter your replacement character: ";
+//        cin >> replacement;
+//        cin.ignore();
+//    }
     
 //    cout << "Target - Replacement: " << target << " - " << replacement << endl;
+    
+    for (int x = 0; x < strlen(inString); x++) {
+        cout << x << ": " << inString[x] << endl;
+    }
     
     // Tests function lastIndexOf
     cout << "\nThe last index with character '" << target << "': ";
@@ -139,13 +143,21 @@ int main(int argc, const char * argv[]) {
 
 int lastIndexOf(const char* inString, char target) {
     int index = -1;
+    int x = 0;
     
 //    cout << strlen(inString) << endl;
-    for (int x = 0; x < strlen(inString); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
-        if (*(inString + x) == target) {
+//    for (int x = 0; x < strlen(inString); x++) {
+//        if (*(inString + x) == target) {
+//            index = x;
+//        }
+//    }
+    
+    // using while loop
+    while (inString[x] != '\0') {
+        if (inString[x] == target) {
             index = x;
         }
+        x++;
     }
     return index;
 }
@@ -164,7 +176,6 @@ void reverse(char* inString) {
     long backwards = strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
         swap(*(inString + x), *(inString + backwards - x - 1));
     }
 }
@@ -183,13 +194,22 @@ void reverse(char* inString) {
 
 int replace(char* inString, char target, char replacementChar) {
     int count = 0;
+    int x = 0;
     
-    for (int x = 0; x < strlen(inString); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
-        if (*(inString + x) == target) {
-            *(inString + x) = replacementChar;
+//    for (int x = 0; x < strlen(inString); x++) {
+//        if (*(inString + x) == target) {
+//            *(inString + x) = replacementChar;
+//            count++;
+//        }
+//    }
+    
+    // using while loop
+    while (inString[x] != '\0') {
+        if (inString[x] == target) {
+            inString[x] = replacementChar;
             count++;
         }
+        x++;
     }
     return count;
 }
@@ -209,7 +229,6 @@ bool isPalindrome(const char* inString) {
     long backwards = strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
         if (toupper(*(inString + x)) != toupper(*(inString + backwards - x - 1))) {
             return false;
         }
@@ -228,9 +247,16 @@ bool isPalindrome(const char* inString) {
  */
 
 void toupper(char* inString) {
-    for (int x = 0; x < strlen(inString); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
+    int x = 0;
+    
+//    for (int x = 0; x < strlen(inString); x++) {
+//        *(inString + x) = toupper(*(inString + x));
+//    }
+    
+    //using while loop
+    while (inString[x] != '\0') {
         *(inString + x) = toupper(*(inString + x));
+        x++;
     }
 }
 
@@ -246,12 +272,20 @@ void toupper(char* inString) {
 
 int numLetters(const char* inString) {
     int count = 0;
+    int x = 0;
     
-    for (int x = 0; x < strlen(inString); x++) {
-//        cout << "\nnew function: \n" << x << ": " << inString[x] << endl;
-        if (isalpha(*(inString + x))) {
+//    for (int x = 0; x < strlen(inString); x++) {
+//        if (isalpha(*(inString + x))) {
+//            count++;
+//        }
+//    }
+    
+    // using while loop
+    while (inString[x] != '\0') {
+        if (isalpha(inString[x])) {
             count++;
         }
+        x++;
     }
     return count;
 }
