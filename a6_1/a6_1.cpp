@@ -53,8 +53,8 @@ int main(int argc, const char * argv[]) {
     // If yes, gets user's input limited to 99 characters
     if (userOpt1 == 1) {
         cout << "Enter your test string (limited to less than 100 characters): ";
-        cin.get(userStr, 100, '\n');
-        cin.ignore();
+        cin.getline(userStr, 100);
+//        cin.ignore();
         inString = userStr;
     } else {
 //        inString = str1;                    // Modify array from options above to test
@@ -87,7 +87,7 @@ int main(int argc, const char * argv[]) {
     }
     
     // Displays original string to test
-    cout << "The original string: " << inString << endl;
+    cout << "\nThe original string: " << inString << endl;
     
     // Tests function lastIndexOf
     cout << "\nThe last index with character '" << target << "': ";
@@ -161,7 +161,7 @@ void reverse(char* inString) {
     int backwards = (int)strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
-        swap(*(inString + x), *(inString + backwards - x - 1));
+        swap(inString[x], inString[backwards - x - 1]);
     }
 }
 
@@ -205,7 +205,7 @@ bool isPalindrome(const char* inString) {
     int backwards = (int)strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
-        if (toupper(*(inString + x)) != toupper(*(inString + backwards - x - 1))) {
+        if (toupper(inString[x]) != toupper(inString[backwards - x - 1])) {
             return false;
         }
     }
@@ -365,40 +365,69 @@ int numLetters(const char* inString) {
  *****
  
  Do you want to enter your own string?: (0 = No; 1 = Yes) 1
- Enter your test string (limited to less than 100 characters: People say nothing is impossible but I do nothing every day.
+ Enter your test string (limited to less than 100 characters): Sit on a potato pan Otis
  Do you want to enter your own target and replacement characters?:(0 = No; 1 = Yes) 0
+ 
+ The original string: Sit on a potato pan Otis
 
- The last index with character 'a': 57
+ The last index with character 'o': 14
 
- The reverse of the string: .yad yreve gnihton od I tub elbissopmi si gnihton yas elpoeP
+ The reverse of the string: sitO nap otatop a no tiS
 
- Number of times the character 'a' was replaced by 'z': 2
- The modified string: People szy nothing is impossible but I do nothing every dzy.
+ Number of times the character 'o' was replaced by 'z': 3
+ The modified string: Sit zn a pztatz pan Otis
 
  Is the string a palindrome? No
 
- The string in all UPPER CASE letters: PEOPLE SAY NOTHING IS IMPOSSIBLE BUT I DO NOTHING EVERY DAY.
+ The string in all UPPER CASE letters: SIT ON A POTATO PAN OTIS
 
- The number of letters in the string is: 49
+ The number of letters in the string is: 19
  Program ended with exit code: 0
  
  *****
  
- Do you want to enter your own string?: (0 = No; 1 = Yes) 0
+ Do you want to enter your own string?: (0 = No; 1 = Yes) 1
+ Enter your test string (limited to less than 100 characters): (o)|(o)
  Do you want to enter your own target and replacement characters?:(0 = No; 1 = Yes) 0
 
- The last index with character 'a': 0
+ The original string: (o)|(o)
 
- The reverse of the string: ABBa
+ The last index with character 'o': 5
 
- Number of times the character 'a' was replaced by 'z': 1
- The modified string: zBBA
+ The reverse of the string: )o(|)o(
+
+ Number of times the character 'o' was replaced by 'z': 2
+ The modified string: (z)|(z)
+
+ Is the string a palindrome? No
+
+ The string in all UPPER CASE letters: (O)|(O)
+
+ The number of letters in the string is: 2
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ Do you want to enter your own string?: (0 = No; 1 = Yes) 1
+ Enter your test string (limited to less than 100 characters): I aM mAdAm mA i
+ Do you want to enter your own target and replacement characters?:(0 = No; 1 = Yes) 1
+ Enter your target character: a
+ Enter your replacement character: W
+
+ The original string: I aM mAdAm mA i
+
+ The last index with character 'a': 2
+
+ The reverse of the string: i Am mAdAm Ma I
+
+ Number of times the character 'a' was replaced by 'W': 1
+ The modified string: I WM mAdAm mA i
 
  Is the string a palindrome? Yes
 
- The string in all UPPER CASE letters: ABBA
+ The string in all UPPER CASE letters: I AM MADAM MA I
 
- The number of letters in the string is: 4
+ The number of letters in the string is: 11
  Program ended with exit code: 0
  
  */
