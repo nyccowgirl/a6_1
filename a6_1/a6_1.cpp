@@ -136,8 +136,7 @@ int main(int argc, const char * argv[]) {
 */
 
 int lastIndexOf(const char* inString, char target) {
-    int lastIndex = -1;
-    int index = 0;
+    int lastIndex = -1, index = 0;
     
     while (inString[index] != '\0') {
         if (inString[index] == target) {
@@ -179,8 +178,7 @@ void reverse(char* inString) {
  */
 
 int replace(char* inString, char target, char replacementChar) {
-    int count = 0;
-    int index = 0;
+    int count = 0, index = 0;
     
     while (inString[index] != '\0') {
         if (inString[index] == target) {
@@ -244,8 +242,7 @@ void toupper(char* inString) {
  */
 
 int numLetters(const char* inString) {
-    int count = 0;
-    int index = 0;
+    int count = 0, index = 0;
     
     while (inString[index] != '\0') {
         if (isalpha(inString[index])) {
