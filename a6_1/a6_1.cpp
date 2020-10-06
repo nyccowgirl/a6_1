@@ -29,17 +29,16 @@ int numLetters(const char* inString);
 
 
 int main(int argc, const char * argv[]) {
-    char str1[] = "Hello World!";            // To define test character arrays
+//    char str1[] = "Hello World!";            // To define test character arrays
 //    char str2[] = "C++ is fun!";
 //    char str3[] = "racecar";
 //    char str4[] = "aBBA";
+    char str5[] = "O!o";
     char target = 'o', replacement = 'z';   // To set default target and replacement char
     int userOpt1 = 0, userOpt2 = 0;         // To set default user options to input
     char userStr[100];                      // To define array to hold user input C-string
     char *inString;                         // To point to a character array
     
-//    cout << strlen(str1) << endl;
-//    cout << sizeof(str1) << endl;
     // Asks if user wants to provide customized string
 //    do {
 //        cout << "Do you want to enter your own string?: (0 = No; 1 = Yes) ";
@@ -60,10 +59,11 @@ int main(int argc, const char * argv[]) {
 //        cout << strlen(userStr) << endl;
         inString = userStr;
     } else {
-        inString = str1;                    // Modify array from options above to test
+//        inString = str1;                    // Modify array from options above to test
 //        inString = str2;
 //        inString = str3;
 //        inString = str4;
+        inString = str5;
     }
     
 //    cout << "Test string: " << inString << endl;
@@ -91,9 +91,11 @@ int main(int argc, const char * argv[]) {
     
 //    cout << "Target - Replacement: " << target << " - " << replacement << endl;
     
-    for (int x = 0; x < strlen(inString); x++) {
-        cout << x << ": " << inString[x] << endl;
-    }
+//    for (int x = 0; x < strlen(inString); x++) {
+//        cout << x << ": " << inString[x] << endl;
+//    }
+    
+    cout << "The original string: " << inString << endl;
     
     // Tests function lastIndexOf
     cout << "\nThe last index with character '" << target << "': ";
@@ -144,9 +146,10 @@ int main(int argc, const char * argv[]) {
 int lastIndexOf(const char* inString, char target) {
     int index = -1;
     int x = 0;
+//    int length = int(strlen(inString));
     
 //    cout << strlen(inString) << endl;
-//    for (int x = 0; x < strlen(inString); x++) {
+//    for (int x = 0; x < length; x++) {
 //        if (*(inString + x) == target) {
 //            index = x;
 //        }
@@ -203,8 +206,9 @@ void reverse(char* inString) {
 int replace(char* inString, char target, char replacementChar) {
     int count = 0;
 //    int x = 0;
+//    int length = (int)(strlen(inString));
     
-//    for (int x = 0; x < strlen(inString); x++) {
+//    for (int x = 0; x < length; x++) {
 //        if (*(inString + x) == target) {
 //            *(inString + x) = replacementChar;
 //            count++;
@@ -244,6 +248,10 @@ int replace(char* inString, char target, char replacementChar) {
 bool isPalindrome(const char* inString) {
     int backwards = (int)strlen(inString);
     
+//    if (backwards == 1) {
+//        return true;
+//    }
+    
     for (int x = 0; x < (backwards / 2); x++) {
         if (toupper(*(inString + x)) != toupper(*(inString + backwards - x - 1))) {
             return false;
@@ -264,8 +272,9 @@ bool isPalindrome(const char* inString) {
 
 void toupper(char* inString) {
 //    int x = 0;
+//    int length = (int)(strlen(inString));
     
-//    for (int x = 0; x < strlen(inString); x++) {
+//    for (int x = 0; x < length; x++) {
 //        *(inString + x) = toupper(*(inString + x));
 //    }
     
@@ -294,8 +303,9 @@ void toupper(char* inString) {
 int numLetters(const char* inString) {
     int count = 0;
 //    int x = 0;
+//    int length = (int)strlen(inString);
     
-//    for (int x = 0; x < strlen(inString); x++) {
+//    for (int x = 0; x < length; x++) {
 //        if (isalpha(*(inString + x))) {
 //            count++;
 //        }
@@ -320,6 +330,114 @@ int numLetters(const char* inString) {
 
 
 /*
+ 
+ The original string: Hello World!
+
+ The last index with character 'o': 7
+
+ The reverse of the string: !dlroW olleH
+
+ Number of times the character 'o' was replaced by 'z': 2
+ The modified string: Hellz Wzrld!
+
+ Is the string a palindrome? No
+
+ The string in all UPPER CASE letters: HELLO WORLD!
+
+ The number of letters in the string is: 10
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ The original string: C++ is fun!
+
+ The last index with character 'o': -1
+
+ The reverse of the string: !nuf si ++C
+
+ Number of times the character 'o' was replaced by 'z': 0
+ The modified string: C++ is fun!
+
+ Is the string a palindrome? No
+
+ The string in all UPPER CASE letters: C++ IS FUN!
+
+ The number of letters in the string is: 6
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ The original string: racecar
+
+ The last index with character 'o': -1
+
+ The reverse of the string: racecar
+
+ Number of times the character 'o' was replaced by 'z': 0
+ The modified string: racecar
+
+ Is the string a palindrome? Yes
+
+ The string in all UPPER CASE letters: RACECAR
+
+ The number of letters in the string is: 7
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ The original string: aBBA
+
+ The last index with character 'o': -1
+
+ The reverse of the string: ABBa
+
+ Number of times the character 'o' was replaced by 'z': 0
+ The modified string: aBBA
+
+ Is the string a palindrome? Yes
+
+ The string in all UPPER CASE letters: ABBA
+
+ The number of letters in the string is: 4
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ The original string: O!o
+
+ The last index with character 'o': 2
+
+ The reverse of the string: o!O
+
+ Number of times the character 'o' was replaced by 'z': 1
+ The modified string: O!z
+
+ Is the string a palindrome? Yes
+
+ The string in all UPPER CASE letters: O!O
+
+ The number of letters in the string is: 2
+ Program ended with exit code: 0
+ 
+ *****
+ 
+ The original string: Aa
+
+ The last index with character 'o': -1
+
+ The reverse of the string: aA
+
+ Number of times the character 'o' was replaced by 'z': 0
+ The modified string: Aa
+
+ Is the string a palindrome? Yes
+
+ The string in all UPPER CASE letters: AA
+
+ The number of letters in the string is: 2
+ Program ended with exit code: 0
+ 
+ *****
  
  Do you want to enter your own string?: (0 = No; 1 = Yes) 1
  Enter your test string (limited to less than 100 characters: People say nothing is impossible but I do nothing every day.
