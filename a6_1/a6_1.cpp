@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
 //    char str2[] = "C++ is fun!";
 //    char str3[] = "racecar";
 //    char str4[] = "aBBA";
-    char target = 'a', replacement = 'z';   // To set default target and replacement char
+    char target = 'o', replacement = 'z';   // To set default target and replacement char
     int userOpt1 = 0, userOpt2 = 0;         // To set default user options to input
     char userStr[100];                      // To define array to hold user input C-string
     char *inString;                         // To point to a character array
@@ -153,12 +153,20 @@ int lastIndexOf(const char* inString, char target) {
 //    }
     
     // using while loop
-    while (inString[x] != '\0') {
-        if (inString[x] == target) {
+    while (*inString != '\0') {
+        if (*inString == target) {
             index = x;
         }
         x++;
+        inString++;
     }
+    
+//    while (inString[x] != '\0') {
+//        if (inString[x] == target) {
+//            index = x;
+//        }
+//        x++;
+//    }
     return index;
 }
 
@@ -173,7 +181,7 @@ int lastIndexOf(const char* inString, char target) {
  */
 
 void reverse(char* inString) {
-    long backwards = strlen(inString);
+    int backwards = (int)strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
         swap(*(inString + x), *(inString + backwards - x - 1));
@@ -194,7 +202,7 @@ void reverse(char* inString) {
 
 int replace(char* inString, char target, char replacementChar) {
     int count = 0;
-    int x = 0;
+//    int x = 0;
     
 //    for (int x = 0; x < strlen(inString); x++) {
 //        if (*(inString + x) == target) {
@@ -204,13 +212,21 @@ int replace(char* inString, char target, char replacementChar) {
 //    }
     
     // using while loop
-    while (inString[x] != '\0') {
-        if (inString[x] == target) {
-            inString[x] = replacementChar;
+    while (*inString != '\0') {
+        if (*inString == target) {
+            *inString = replacementChar;
             count++;
         }
-        x++;
+        inString++;
     }
+    
+//    while (inString[x] != '\0') {
+//        if (inString[x] == target) {
+//            inString[x] = replacementChar;
+//            count++;
+//        }
+//        x++;
+//    }
     return count;
 }
 
@@ -226,7 +242,7 @@ int replace(char* inString, char target, char replacementChar) {
  */
 
 bool isPalindrome(const char* inString) {
-    long backwards = strlen(inString);
+    int backwards = (int)strlen(inString);
     
     for (int x = 0; x < (backwards / 2); x++) {
         if (toupper(*(inString + x)) != toupper(*(inString + backwards - x - 1))) {
@@ -247,17 +263,22 @@ bool isPalindrome(const char* inString) {
  */
 
 void toupper(char* inString) {
-    int x = 0;
+//    int x = 0;
     
 //    for (int x = 0; x < strlen(inString); x++) {
 //        *(inString + x) = toupper(*(inString + x));
 //    }
     
     //using while loop
-    while (inString[x] != '\0') {
-        *(inString + x) = toupper(*(inString + x));
-        x++;
+    while (*inString != '\0') {
+        *inString = toupper(*inString);
+        inString++;
     }
+    
+//    while (inString[x] != '\0') {
+//        *(inString + x) = toupper(*(inString + x));
+//        x++;
+//    }
 }
 
 
@@ -272,7 +293,7 @@ void toupper(char* inString) {
 
 int numLetters(const char* inString) {
     int count = 0;
-    int x = 0;
+//    int x = 0;
     
 //    for (int x = 0; x < strlen(inString); x++) {
 //        if (isalpha(*(inString + x))) {
@@ -281,12 +302,19 @@ int numLetters(const char* inString) {
 //    }
     
     // using while loop
-    while (inString[x] != '\0') {
-        if (isalpha(inString[x])) {
+    while (*inString != '\0') {
+        if (isalpha(*inString)) {
             count++;
         }
-        x++;
+        inString++;
     }
+    
+//    while (inString[x] != '\0') {
+//        if (isalpha(inString[x])) {
+//            count++;
+//        }
+//        x++;
+//    }
     return count;
 }
 
