@@ -27,16 +27,18 @@ bool isPalindrome(const char* inString);
 void toupper(char* inString);
 int numLetters(const char* inString);
 
+const int SIZE = 100;
+
 
 int main(int argc, const char * argv[]) {
-//    char str1[] = "Hello World!";            // To define test character arrays
+    char str1[] = "Hello World!";           // To define various test character arrays
 //    char str2[] = "C++ is fun!";
 //    char str3[] = "racecar";
 //    char str4[] = "aBBA";
-    char str5[] = "O!o";
+//    char str5[] = "O!o";
     char target = 'o', replacement = 'z';   // To set default target and replacement char
     int userOpt1 = 0, userOpt2 = 0;         // To set default user options to input
-    char userStr[100];                      // To define array to hold user input C-string
+    char userStr[SIZE];                     // To define array to hold user input C-string
     char *inString;                         // To point to a character array
     
     // Asks if user wants to provide customized string
@@ -50,21 +52,20 @@ int main(int argc, const char * argv[]) {
         }
     } while (!(userOpt1 == 0 || userOpt1 == 1));
     
-    // If yes, gets user's input limited to 99 characters
+    // If yes, gets user's input limited to 99 characters; otherwise, use a default string
     if (userOpt1 == 1) {
         cout << "Enter your test string (limited to less than 100 characters): ";
-        cin.getline(userStr, 100);
-//        cin.ignore();
+        cin.getline(userStr, SIZE);
         inString = userStr;
     } else {
-//        inString = str1;                    // Modify array from options above to test
+        inString = str1;                    // Modify array from options above to test
 //        inString = str2;
 //        inString = str3;
 //        inString = str4;
-        inString = str5;
+//        inString = str5;
     }
     
-    // Asks if user wants to modify target and replacement characters from default
+    // Asks if user wants to modify target and replacement characters
     do {
         cout << "Do you want to enter your own target and replacement characters?:";
         cout << "(0 = No; 1 = Yes) ";
@@ -76,7 +77,7 @@ int main(int argc, const char * argv[]) {
         }
     } while (!(userOpt2 == 0 || userOpt2 == 1));
 
-    // If yes, gets user's inputs for both
+    // If yes, gets user's inputs for both; otherwise, use default characters
     if (userOpt2 == 1) {
         cout << "Enter your target character: ";
         cin >> target;
@@ -120,8 +121,6 @@ int main(int argc, const char * argv[]) {
     
     // Tests function numLetters
     cout <<"\nThe number of letters in the string is: " << numLetters(inString) << endl;
-    
-    return 0;
 }
 
 
@@ -133,6 +132,9 @@ int main(int argc, const char * argv[]) {
  Definition of function lastIndexOf. The function passes in a pointer to a string (stored
  in a character array) and a target character and returns the last index in the string where
  the target character can be found. It returns -1 if the character is not in the string.
+ 
+ Pre: Pointer to string stored in character array and target character
+ Post: Returns last index in the string where target character resides or -1 if not located
 */
 
 int lastIndexOf(const char* inString, char target) {
@@ -155,6 +157,9 @@ int lastIndexOf(const char* inString, char target) {
 /*
  Definition of function reverse. The function passes in a pointer to a string (stored in a
  character array) and reverses the string.
+ 
+ Pre: Pointer to string stored in character array
+ Post: Reverses the characters in the string
  */
 
 void reverse(char* inString) {
@@ -175,6 +180,10 @@ void reverse(char* inString) {
  character array), a target character and a replacement character. It searchs the string for
  each target character and replaces it with the replacement character. It returns the number
  of times the character was replaced.
+ 
+ Pre: Pointer to string stored in character array and target and replacement characters
+ Post: Returns the number of times that the target character was replaced with the
+ replacement character in the string
  */
 
 int replace(char* inString, char target, char replacementChar) {
@@ -199,6 +208,9 @@ int replace(char* inString, char target, char replacementChar) {
  Definition of function isPalindrome. The function passes in a pointer to a string (stored
  in a character array). It returns true if the string is a palindrome and false if not. The
  function is not case sensitive.
+ 
+ Pre: Pointer to string stored in character array
+ Post: Returns true or false as to whether string is a palindrome
  */
 
 bool isPalindrome(const char* inString) {
@@ -220,6 +232,9 @@ bool isPalindrome(const char* inString) {
 /*
  Definition of function toupper. The function passes in a pointer to a string (stored in a
  character array) and converts the string to all upper case letters.
+ 
+ Pre: Pointer to string stored in character array
+ Post: Converts all characters in character array to upper case letters
  */
 
 void toupper(char* inString) {
@@ -239,6 +254,9 @@ void toupper(char* inString) {
 /*
  Definition of numLetters. The function passes in a pointer to a string (stored in a
  character array) and returns the number of letters in the string.
+ 
+ Pre: Pointer to string stored in character array
+ Post: Returns the number of letters in the string
  */
 
 int numLetters(const char* inString) {
